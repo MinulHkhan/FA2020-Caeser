@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class CaesarCipher { 
+  
+    // Driver code 
+    public static void main(String[] args) { 
+        Scanner input = new Scanner(System.in);
+        int key = 0;
+        while(true) {
+            System.out.print("rotation: ");
+            key = input.nextInt();
+            if(key > 25) {
+                System.out.println("Too High!");
+            } else {
+                break;
+            }
+
+        }
+        System.out.print("plain Text: ");
+        input.nextLine();
+        String plainText = input.nextLine();
+
+        String cipherText = ""; 
+  
+        for (int i = 0; i < plainText.length(); i++) { 
+            if(Character.isLetter(plainText.charAt(i))) {
+                if (Character.isUpperCase(plainText.charAt(i))) { 
+                    char ch = (char)(((int)plainText.charAt(i) + key - 65) % 26 + 65); 
+                    cipherText += ch; 
+                } 
+                else { 
+                    char ch = (char)(((int)plainText.charAt(i) +  key - 97) % 26 + 97); 
+                    cipherText += ch; 
+                }
+            }
+            else {
+                cipherText += plainText.charAt(i);
+            }
+            
+
+        }
+        System.out.println("cipher text: " + cipherText); 
+    } 
+}
